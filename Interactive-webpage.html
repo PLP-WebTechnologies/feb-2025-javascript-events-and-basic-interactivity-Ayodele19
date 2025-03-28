@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Webpage</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        form { margin: 20px auto; width: 300px; }
+        input { display: block; width: 100%; padding: 10px; margin-bottom: 10px; }
+        button { padding: 10px 20px; cursor: pointer; }
+        .interactive-button { background-color: blue; color: white; border: none; }
+        .interactive-button:hover { background-color: darkblue; }
+    </style>
+</head>
+<body>
+    <h2>Event Listeners & Form Validation</h2>
+    <form id="myForm">
+        <input type="text" id="name" placeholder="Enter your name">
+        <input type="email" id="email" placeholder="Enter your email">
+        <button type="submit">Submit</button>
+    </form>
+    <p id="message"></p>
+    <button class="interactive-button" id="colorButton">Click Me!</button>
+    <script>
+        document.getElementById("myForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let name = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let message = document.getElementById("message");
+            
+            if (name === "" || email === "") {
+                message.textContent = "Please fill in all fields.";
+                message.style.color = "red";
+            } else {
+                message.textContent = "Form submitted successfully!";
+                message.style.color = "green";
+            }
+        });
+        
+        let button = document.getElementById("colorButton");
+        button.addEventListener("click", function() {
+            button.style.backgroundColor = button.style.backgroundColor === "blue" ? "green" : "blue";
+        });
+    </script>
+</body>
+</html>
+<!-- This code creates a simple interactive webpage with a form and a button. The form validates input fields and the button changes color when clicked. -->
